@@ -46,7 +46,27 @@ export const Type = {
   dark: "dark",
   fairy: "fairy",
   stellar: "stellar",
+  
   none: "none",
+  
+  normalI: "plain",
+  fightingI: "combat",
+  flyingI: "aero",
+  poisonI: "toxic",
+  groundI: "earth",
+  rockI: "stone",
+  bugI: "insect",
+  ghostI: "spirit",
+  steelI: "metal",
+  fireI: "flame",
+  waterI: "hydro",
+  grassI: "plant",
+  electricI: "thunder",
+  psychicI: "mystic",
+  iceI: "frost",
+  dragonI: "wyrm",
+  darkI: "malice",
+  fairyI: "sprite",
 } as const;
 
 const typeSet = new Set(Object.values(Type));
@@ -72,30 +92,76 @@ function createAbility(...abilityInfo: AbilityInfo[]): Ability {
 export const abilities = {
   none: createAbility(),
   // Weakness
-  fluffy: createAbility({ type: Type.fire, value: 2 }),
+  fluffy: createAbility(
+    { type: Type.fire, value: 2 },
+    { type: Type.fireI, value: 0.5 },
+    ),
   // Resistances
-  purifying_salt: createAbility({ type: Type.ghost, value: 0.5 }),
-  heatproof: createAbility({ type: Type.fire, value: 0.5 }),
-  water_bubble: createAbility({ type: Type.fire, value: 0.5 }),
+  purifying_salt: createAbility(
+    { type: Type.ghost, value: 0.5 },
+    { type: Type.ghostI, value: 2 },
+  ),
+  heatproof: createAbility(
+    { type: Type.fire, value: 0.5 },
+    { type: Type.fireI, value: 2 },
+  ),
+  water_bubble: createAbility(
+    { type: Type.fire, value: 0.5 },
+    { type: Type.fireI, value: 2 },
+  ),
   thick_fat: createAbility(
     { type: Type.fire, value: 0.5 },
     { type: Type.ice, value: 0.5 },
+    { type: Type.fireI, value: 2 },
+    { type: Type.iceI, value: 2 },
   ),
   // Immunities
-  earth_eater: createAbility({ type: Type.ground, value: 0 }),
-  levitate: createAbility({ type: Type.ground, value: 0 }),
-  flash_fire: createAbility({ type: Type.fire, value: 0 }),
-  well_baked_body: createAbility({ type: Type.fire, value: 0 }),
+  earth_eater: createAbility(
+    { type: Type.ground, value: 0 },
+    { type: Type.groundI, value: 2 },
+  ),
+  levitate: createAbility(
+    { type: Type.ground, value: 0 },
+    { type: Type.groundI, value: 2 },
+  ),
+  flash_fire: createAbility(
+    { type: Type.fire, value: 0 },
+    { type: Type.fireI, value: 0 },
+  ),
+  well_baked_body: createAbility(
+    { type: Type.fire, value: 0 },
+    { type: Type.fireI, value: 0 },
+  ),
   dry_skin: createAbility(
     { type: Type.fire, value: 1.25 },
     { type: Type.water, value: 0 },
+    { type: Type.fireI, value: 0.75 },
+    { type: Type.waterI, value: 2 },
   ),
-  storm_drain: createAbility({ type: Type.water, value: 0 }),
-  water_absorb: createAbility({ type: Type.water, value: 0 }),
-  sap_sipper: createAbility({ type: Type.grass, value: 0 }),
-  lightning_rod: createAbility({ type: Type.electric, value: 0 }),
-  motor_drive: createAbility({ type: Type.electric, value: 0 }),
-  volt_absorb: createAbility({ type: Type.electric, value: 0 }),
+  storm_drain: createAbility(
+    { type: Type.water, value: 0 },
+    { type: Type.waterI, value: 2 },
+  ),
+  water_absorb: createAbility(
+    { type: Type.water, value: 0 },
+    { type: Type.waterI, value: 2 },
+  ),
+  sap_sipper: createAbility(
+    { type: Type.grass, value: 0 },
+    { type: Type.grassI, value: 2 },
+  ),
+  lightning_rod: createAbility(
+    { type: Type.electric, value: 0 },
+    { type: Type.electricI, value: 2 },
+  ),
+  motor_drive: createAbility(
+    { type: Type.electric, value: 0 },
+    { type: Type.electricI, value: 2 },
+  ),
+  volt_absorb: createAbility(
+    { type: Type.electric, value: 0 },
+    { type: Type.electricI, value: 2 },
+  ),
   // Other
   filter: createAbility(),
   wonder_guard: createAbility(),
@@ -189,6 +255,25 @@ export const types = [
   Type.dark,
   Type.fairy,
   Type.stellar,
+  
+  Type.normalI,
+  Type.fightingI,
+  Type.flyingI,
+  Type.poisonI,
+  Type.groundI,
+  Type.rockI,
+  Type.bugI,
+  Type.ghostI,
+  Type.steelI,
+  Type.fireI,
+  Type.waterI,
+  Type.grassI,
+  Type.electricI,
+  Type.psychicI,
+  Type.iceI,
+  Type.dragonI,
+  Type.darkI,
+  Type.fairyI,
 ];
 
 export const typesWithoutNone = [...types];
