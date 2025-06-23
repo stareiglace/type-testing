@@ -25,6 +25,25 @@ const typeColors = {
   fairy: "#ef70ef",
   none: "#808080",
   stellar: "#44628d",
+  
+  normalI: "#9fa19f",
+  fightingI: "#ff8000",
+  flyingI: "#81b9ef",
+  poisonI: "#9141cb",
+  groundI: "#915121",
+  rockI: "#afa981",
+  bugI: "#91a119",
+  ghostI: "#704170",
+  steelI: "#60a1b8",
+  fireI: "#e62829",
+  waterI: "#2980ef",
+  grassI: "#3fa129",
+  electricI: "#fac000",
+  psychicI: "#ef4179",
+  iceI: "#3fd8ff",
+  dragonI: "#5060e1",
+  darkI: "#50413f",
+  fairyI: "#ef70ef",
 } as const;
 
 export function typeColorAlpha(
